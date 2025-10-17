@@ -1,24 +1,38 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- 🌐 Basic Meta Tags -->
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-site-verification" content="9lrP3BvN-psI_n92yRyqadwC5_8Nyd8htjIYT4IVvbc" />
+    <link rel="icon" type="image/png" href="/logo.jpg" />
+
     <title>Hasnat Evan</title>
+
+    <!-- 🌀 Tailwind CSS (Optional যদি Vite + Tailwind সেট করা থাকে তবে লাগবে না) -->
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
   </head>
-  <body>
+
+  <body class="bg-[#111111] text-white">
+    <!-- 🏠 React root element -->
     <div id="root"></div>
-    <!-- EmailJS SDK -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    
-    <!-- Initialize EmailJS -->
+
+    <!-- ⚛️ React Vite entry file -->
+    <script type="module" src="/src/main.jsx"></script>
+
+    <!-- 📩 EmailJS CDN -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+
+    <!-- 🛠️ EmailJS Initialize -->
     <script type="text/javascript">
-      (function() {
-        emailjs.init("4b_XIrPhrNR6Rctz4");  
+      (function () {
+        emailjs.init({
+          publicKey: "N2Gfn49dYvrjnYCRs", // ⚠️ এখানে নিজের public key বসাও
+        });
       })();
     </script>
-    
-    <!-- React App -->
-    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

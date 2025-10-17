@@ -1,90 +1,105 @@
-import { FaDesktop, FaPencilRuler, FaPalette, FaChartLine } from 'react-icons/fa';
-import { MdVideoLibrary, MdStorage } from 'react-icons/md';
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
+import {
+  FaLaptopCode,
+  FaDatabase,
+  FaCogs,
+  FaPaintBrush,
+  FaGlobe,
+} from "react-icons/fa";
+
+const services = [
+  {
+    icon: FaLaptopCode,
+    title: "Front-End Development",
+    description:
+      "Building responsive, interactive, and beautiful user interfaces using React.js, Next.js, HTML5, CSS3, and Tailwind CSS.",
+  },
+  {
+    icon: FaDatabase,
+    title: "Back-End Development",
+    description:
+      "Creating robust server-side applications with Node.js, Express.js, MongoDB, Firebase, and JWT authentication.",
+  },
+  {
+    icon: FaCogs,
+    title: "Other Skills",
+    description:
+      "Version control, API integration, deployment, performance optimization, and problem-solving for full-stack applications.",
+  },
+  {
+    icon: FaPaintBrush,
+    title: "Graphic Design",
+    description:
+      "Designing visually appealing graphics, logos, and layouts for web and print media using modern tools.",
+  },
+  {
+    icon: FaGlobe,
+    title: "Web Design",
+    description:
+      "Creating modern, user-friendly, and responsive web designs focused on usability and aesthetics.",
+  },
+];
+
+const container = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { staggerChildren: 0.2 } },
+};
+
+const item = {
+  hidden: { opacity: 0, scale: 0.95, y: 20 },
+  show: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
 
 const WhatIDo = () => {
-  const services = [
-    {
-      icon: <FaPalette />,
-      title: 'Graphic Design',
-      description:
-        'Creating visual content to communicate messages through typography, imagery, and colors.',
-    },
-    {
-      icon: <FaPencilRuler />,
-      title: 'UI/UX Design',
-      description:
-        'Designing intuitive and engaging user interfaces and experiences for websites and apps.',
-    },
-    {
-      icon: <MdVideoLibrary />,
-      title: 'Video Editing',
-      description:
-        'Cutting, arranging, and enhancing video footage to create polished final videos.',
-    },
-    {
-      icon: <MdStorage />,
-      title: 'C-Panel Sell',
-      description:
-        'Providing control panel solutions for web hosting management and server administration.',
-    },
-    {
-      icon: <FaDesktop />,
-      title: 'Web Design',
-      description:
-        'Designing responsive and user-friendly websites with modern aesthetics and functionality.',
-    },
-    {
-      icon: <FaChartLine />,
-      title: 'Business Analysis',
-      description:
-        'Analyzing business processes to identify opportunities and improve efficiency.',
-    },
-  ];
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  };
-
   return (
-    <section id="what-i-do" className="py-20 px-4 bg-gray-100 text-gray-700 overflow-x-hidden ">
-      {/* Section Title */}
-      <div className="relative text-center mb-14">
-        <span className="text-gray-200 absolute inset-0 flex justify-center text-6xl font-bold opacity-30 -z-10 select-none">
-          SERVICES
-        </span>
-        <h2 className="text-4xl font-bold inline-block border-b-4 border-green-500 relative z-10">
-          What I Do?
+    <section
+      id="what-i-do"
+      className="w-full bg-[#0B0B0B] text-white py-20 px-4 md:px-16"
+    >
+      {/* === Section Title === */}
+      <div className="text-center mb-16">
+        <p className="uppercase text-gray-400 font-semibold tracking-widest">
+          What I Do
+        </p>
+        <h2 className="text-4xl md:text-5xl font-bold mt-2">
+          My <span className="text-[#C6FF00]">Skills & Services</span>
         </h2>
+        <p className="text-gray-400 mt-4 max-w-2xl mx-auto text-sm sm:text-base">
+          I specialize in creating modern web applications with clean code and
+          best practices. I focus on both front-end and back-end development, as
+          well as design, to deliver full-stack solutions.
+        </p>
       </div>
 
-      {/* Services Grid */}
-     {/* Services Grid */}
-<div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-  {services.map((service, idx) => (
-    <div key={idx} className="overflow-hidden rounded-lg">
+      {/* === Cards Section === */}
       <motion.div
-        className="bg-white rounded-lg shadow-md p-6 flex flex-col md:flex-row items-center md:items-start gap-5 text-center md:text-left max-w-full"
-        variants={cardVariants}
+        variants={container}
         initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.5, delay: idx * 0.15 }}
-        whileHover={{ scale: 1.05 }}
+        whileInView="show"
+        viewport={{ once: false, amount: 0.2 }}
+        className="flex flex-wrap justify-center gap-6"
       >
-        <div className="text-green-600 text-4xl flex items-center justify-center w-20 h-20 flex-shrink-0 rounded-full bg-green-50">
-          {service.icon}
-        </div>
-        <div className="max-w-full md:max-w-[400px]">
-          <h3 className="text-xl font-semibold text-gray-800">{service.title}</h3>
-          <p className="text-gray-600 mt-2">{service.description}</p>
-        </div>
+        {services.map((service, i) => {
+          const Icon = service.icon;
+          return (
+            <motion.div
+              key={i}
+              variants={item}
+              whileHover={{ scale: 1.05 }}
+              className="bg-[#1A1A1A] rounded-2xl border border-transparent hover:border-[#C6FF00] hover:shadow-[0_0_25px_#C6FF00] transition-all duration-300 
+              p-6 flex flex-col justify-between text-center w-full sm:w-[45%] lg:w-[30%] min-h-[300px] group"
+            >
+              <div className="flex flex-col items-center">
+                <Icon className="w-12 h-12 text-[#C6FF00] mb-4 transition-all duration-300 group-hover:scale-110" />
+                <h3 className="text-lg font-semibold mb-2">{service.title}</h3>
+                <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
+                  {service.description}
+                </p>
+              </div>
+            </motion.div>
+          );
+        })}
       </motion.div>
-    </div>
-  ))}
-</div>
-
     </section>
   );
 };

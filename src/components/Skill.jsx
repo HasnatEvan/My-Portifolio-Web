@@ -1,91 +1,136 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 
-const skills = [
-  { name: "HTML", percent: 95 },
-  { name: "CSS", percent: 90 },
-  { name: "Next.js", percent: 65 },
-  { name: "MongoDB", percent: 75 },
-  { name: "Express.js", percent: 80 },
-  { name: "React.js", percent: 85 },
-  { name: "Node.js", percent: 80 },
-  { name: "Firebase", percent: 90 },
+const skillsFront = [
+  { name: "React.js", percent: 90 },
+  { name: "Next.js", percent: 60 },
+  { name: "JavaScript (ES6+)", percent: 90 },
+  { name: "HTML5", percent: 100 },
+  { name: "CSS3", percent: 90 },
+  { name: "Tailwind CSS", percent: 100 },
+];
+
+const skillsBack = [
+  { name: "Node.js", percent: 90 },
+  { name: "Express.js", percent: 95 },
+  { name: "MongoDB", percent: 100 },
+  { name: "Firebase", percent: 95 },
+  { name: "JWT Authentication", percent: 100 },
 ];
 
 const Skill = () => {
   const sectionRef = useRef(null);
-  const [fillPercents, setFillPercents] = useState(skills.map(() => 0));
+  const [frontProgress, setFrontProgress] = useState(skillsFront.map(() => 0));
+  const [backProgress, setBackProgress] = useState(skillsBack.map(() => 0));
+  const animationRef = useRef(null);
 
-  const checkIfInView = () => {
-    if (!sectionRef.current) return;
+  const animateSkills = () => {
+    const start = performance.now();
+    const duration = 1000; // 1 second
 
-    const rect = sectionRef.current.getBoundingClientRect();
-    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    const animate = (time) => {
+      const progress = Math.min((time - start) / duration, 1);
 
-    if (rect.top <= windowHeight * 0.75 && rect.bottom >= 0) {
-      setFillPercents(skills.map((skill) => skill.percent));
-    } else {
-      setFillPercents(skills.map(() => 0));
-    }
+      setFrontProgress(
+        skillsFront.map((s) => Math.floor(s.percent * progress))
+      );
+      setBackProgress(
+        skillsBack.map((s) => Math.floor(s.percent * progress))
+      );
+
+      if (progress < 1) {
+        animationRef.current = requestAnimationFrame(animate);
+      }
+    };
+
+    cancelAnimationFrame(animationRef.current);
+    animationRef.current = requestAnimationFrame(animate);
   };
 
   useEffect(() => {
-    checkIfInView();
-    window.addEventListener("scroll", checkIfInView);
-    return () => window.removeEventListener("scroll", checkIfInView);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) animateSkills();
+          else {
+            setFrontProgress(skillsFront.map(() => 0));
+            setBackProgress(skillsBack.map(() => 0));
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+
+    return () => {
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
+      cancelAnimationFrame(animationRef.current);
+    };
   }, []);
 
   return (
     <section
-       id="skills"
-  ref={sectionRef}
-  className="py-10 px-6 bg-white w-full min-h-screen"
+      id="skills"
+      ref={sectionRef}
+      className="w-full bg-[#0B0B0B] text-white py-20 px-4 md:px-16 lg:px-24"
     >
-      <h2 className="text-3xl font-semibold text-gray-900 mb-10 text-center">
-        My Skills
-      </h2>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-        {skills.map((skill, idx) => (
-          <div key={idx}>
-            <div className="flex justify-between mb-2 font-semibold text-gray-800">
-              <span>{skill.name}</span>
-              <span>{fillPercents[idx]}%</span>
-            </div>
-            <div className="w-full bg-gray-300 rounded-full h-2 overflow-hidden">
-              <div
-                className="bg-green-500 h-2 rounded-full transition-all duration-1000 ease-in-out shadow-md"
-                style={{ width: `${fillPercents[idx]}%` }}
-                aria-label={`${skill.name} proficiency: ${fillPercents[idx]}%`}
-              ></div>
-            </div>
-          </div>
-        ))}
+      {/* === Section Title === */}
+      <div className="text-center mb-16">
+        <p className="uppercase text-gray-400 font-semibold tracking-widest">
+          My Expertise
+        </p>
+        <h2 className="text-4xl md:text-5xl font-bold mt-2">
+          Technical <span className="text-[#C6FF00]">Skills</span>
+        </h2>
       </div>
 
-      <div className="mt-12 text-center">
-        <a
-          href="https://drive.google.com/file/d/1OrgD71rAg3f2RIXIuawM1pKSQYU9IS93/view?usp=drivesdk"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-6 py-2 border border-gray-500 text-gray-700 rounded-full hover:bg-gray-100 transition"
-          download
-        >
-          Download Resume
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-4 w-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4"
-            />
-          </svg>
-        </a>
+      {/* === Skill Cards === */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        {/* Front-End */}
+        <div className="bg-[#1A1A1A] rounded-2xl p-8 shadow-[0_0_15px_rgba(198,255,0,0.05)] border border-transparent hover:border-[#C6FF00] transition-all duration-500">
+          <h3 className="text-2xl font-semibold mb-6 text-[#C6FF00]">
+            Front-End
+          </h3>
+          <ul className="space-y-5">
+            {skillsFront.map((skill, i) => (
+              <li key={i}>
+                <div className="flex justify-between text-sm sm:text-base mb-1">
+                  <span>{skill.name}</span>
+                  <span>{frontProgress[i]}%</span>
+                </div>
+                <div className="w-full bg-gray-700/60 h-3 rounded-full overflow-hidden">
+                  <div
+                    className="bg-[#C6FF00] h-3 rounded-full transition-all duration-500 ease-out"
+                    style={{ width: `${frontProgress[i]}%` }}
+                  />
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Back-End */}
+        <div className="bg-[#1A1A1A] rounded-2xl p-8 shadow-[0_0_15px_rgba(198,255,0,0.05)] border border-transparent hover:border-[#C6FF00] transition-all duration-500">
+          <h3 className="text-2xl font-semibold mb-6 text-[#C6FF00]">
+            Back-End
+          </h3>
+          <ul className="space-y-5">
+            {skillsBack.map((skill, i) => (
+              <li key={i}>
+                <div className="flex justify-between text-sm sm:text-base mb-1">
+                  <span>{skill.name}</span>
+                  <span>{backProgress[i]}%</span>
+                </div>
+                <div className="w-full bg-gray-700/60 h-3 rounded-full overflow-hidden">
+                  <div
+                    className="bg-[#C6FF00] h-3 rounded-full transition-all duration-500 ease-out"
+                    style={{ width: `${backProgress[i]}%` }}
+                  />
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );
