@@ -4,10 +4,9 @@ import { motion } from "framer-motion";
 const Education = () => {
   return (
     <section
-      id="education" // ✅ Added ID for linking
+      id="education"
       className="w-full bg-[#0B0B0B] text-white flex flex-col lg:flex-row justify-between items-center px-4 sm:px-8 md:px-16 lg:px-24 py-16 sm:py-20 gap-16 relative overflow-hidden"
     >
-
       {/* Left Side */}
       <motion.div
         className="flex-1 space-y-6 z-10 text-center lg:text-left"
@@ -69,13 +68,17 @@ const Education = () => {
           ))}
         </div>
 
-        <motion.button
+        {/* ✅ Resume Button */}
+        <motion.a
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          href="https://drive.google.com/file/d/1vdM5PMfVEuz8GVQ75UIxQCi6LHBaxfPz/view"
+          target="_blank"
+          rel="noopener noreferrer"
           className="bg-[#C6FF00] text-black font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-md mt-4 hover:bg-[#a3e000] transition flex items-center justify-center gap-2 mx-auto lg:mx-0"
         >
           View Resume <FiArrowUpRight />
-        </motion.button>
+        </motion.a>
       </motion.div>
 
       {/* Right Side */}
@@ -99,7 +102,9 @@ const Education = () => {
           animate={{ rotate: [0, 360] }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         >
-          <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#C6FF00]">2021–2025</p>
+          <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#C6FF00]">
+            2021–2025
+          </p>
           <p className="text-gray-300 text-xs sm:text-sm mt-2">Active Academic Years</p>
         </motion.div>
 
@@ -108,7 +113,7 @@ const Education = () => {
           className="absolute top-4 sm:top-8 left-1/2 -translate-x-1/2 bg-[#C6FF00] text-black px-3 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-md whitespace-nowrap"
           initial={{ y: -50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.3, type: 'spring' }}
+          transition={{ duration: 0.8, delay: 0.3, type: "spring" }}
           viewport={{ once: false }}
         >
           SSC - 2021
@@ -117,7 +122,7 @@ const Education = () => {
           className="absolute top-1/2 left-[65%] ml-20 sm:left-auto sm:right-1/2 -translate-x-1/2 sm:translate-x-[140px] -translate-y-1/2 bg-white text-black px-3 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-md whitespace-nowrap"
           initial={{ x: 50, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.6, type: 'spring' }}
+          transition={{ duration: 0.8, delay: 0.6, type: "spring" }}
           viewport={{ once: false }}
         >
           Diploma (CSE)

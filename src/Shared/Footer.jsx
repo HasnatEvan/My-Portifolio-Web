@@ -43,21 +43,22 @@ const Footer = () => {
           <ul className="flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-6 mb-6 text-gray-300 text-[15px]">
             <li
               className="cursor-pointer hover:text-white transition"
-              onClick={() => scrollToSection("#service")}
+              onClick={() => scrollToSection("#about")}
             >
-              Service
+                About
+            </li>
+             <li
+              className="cursor-pointer hover:text-white transition"
+              onClick={() => scrollToSection("#what-i-do")}
+            >
+              What I Do
             </li>
             <li
               className="cursor-pointer hover:text-white transition"
               onClick={() => scrollToSection("#projects")}
             >
               Projects
-            </li>
-            <li
-              className="cursor-pointer hover:text-white transition"
-              onClick={() => scrollToSection("#what-i-do")}
-            >
-              What I Do
+           
             </li>
             <li
               className="cursor-pointer hover:text-white transition"

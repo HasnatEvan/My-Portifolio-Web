@@ -121,7 +121,7 @@ const Navbar = () => {
         </ul>
 
         {/* Appointment Form */}
-        <h2 className="text-lg sm:text-xl font-semibold mb-5">Get Appointment</h2>
+        <h2 className="text-lg sm:text-xl font-semibold mb-5">Get in Touch</h2>
 
         <form ref={formRef} onSubmit={sendAppointment} className="flex flex-col gap-3 sm:gap-4">
           <input

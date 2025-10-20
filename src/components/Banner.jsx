@@ -76,11 +76,18 @@ const Typewriter = ({ text, speed = 150 }) => {
   return <span ref={ref}>{displayText}<span className="animate-pulse">|</span></span>;
 };
 
-// Banner Component
+// 🟡 Banner Component
 const Banner = () => {
+  // scroll to contact section
+  const handleScrollToContact = () => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="bg-[#0B0B0B] text-white w-full flex flex-col lg:flex-row items-center justify-between px-6 sm:px-10 md:px-16 lg:px-20 py-16 md:py-24 gap-10 relative overflow-hidden">
-
       {/* Left Section */}
       <div className="flex-1 max-w-full lg:max-w-[600px] text-center lg:text-left flex flex-col gap-8">
         <div>
@@ -97,12 +104,22 @@ const Banner = () => {
 
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row items-center sm:items-start justify-center sm:justify-start gap-4 sm:gap-6">
-            <button className="bg-[#C6FF00] text-[#111111] px-6 sm:px-8 py-2 sm:py-3 rounded-[12px] font-semibold flex items-center gap-2 hover:bg-[#d4ff33] transition">
+            <button
+              onClick={handleScrollToContact}
+              className="bg-[#C6FF00] text-[#111111] px-6 sm:px-8 py-2 sm:py-3 rounded-[12px] font-semibold flex items-center gap-2 hover:bg-[#d4ff33] transition"
+            >
               Hire Me <FiArrowRight />
             </button>
-            <button className="text-gray-300 hover:text-[#C6FF00] underline flex items-center gap-2 mt-2 lg:mt-4">
-              Download Resume <FiArrowRight />
-            </button>
+            <a
+              href="https://drive.google.com/file/d/1vdM5PMfVEuz8GVQ75UIxQCi6LHBaxfPz/view"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className="text-gray-300 hover:text-[#C6FF00] underline flex items-center gap-2 mt-2 lg:mt-4">
+                Download Resume <FiArrowRight />
+              </button>
+            </a>
+
           </div>
         </div>
 
