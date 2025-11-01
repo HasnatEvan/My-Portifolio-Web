@@ -28,14 +28,14 @@ const Navbar = () => {
 
     emailjs
       .sendForm(
-        "service_0eu0xpb", // তোমার service ID
-        "template_4ekxhh9", // তোমার template ID
+        "service_g2lfcj6", // তোমার service ID
+        "template_qjnsnwp", // তোমার template ID
         formRef.current,
         "N2Gfn49dYvrjnYCRs" // তোমার public key
       )
       .then(
         () => {
-          toast.success("Appointment sent successfully!", {
+          toast.success("Message sent successfully!", {
             position: "top-center",
             autoClose: 3000,
           });

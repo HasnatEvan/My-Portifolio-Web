@@ -2,13 +2,14 @@ import React from "react";
 import project1 from "../../src/assets/Project (1).png";
 import project2 from "../../src/assets/Project (2).png";
 import project3 from "../../src/assets/Project (3).png";
+import project4 from "../../src/assets/Project (4).png";
 
 const Projects = () => {
   const projectData = [
     {
       id: 1,
       image: project1,
-      link: "https://khajahconstructingltd.com",
+      link: "https://frontlinebd.net/",
       bg: "from-green-700 to-black",
     },
     {
@@ -23,6 +24,12 @@ const Projects = () => {
       link: "https://fastforwardlogistics.org",
       bg: "from-yellow-600 to-black",
     },
+    {
+      id: 4,
+      image: project4,
+      link: "https://khajahconstructingltd.com/",
+      bg: "from-yellow-600 to-black",
+    },
   ];
 
   return (
@@ -33,7 +40,8 @@ const Projects = () => {
       {/* Heading Section */}
       <div className="text-center mb-12 px-2">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-          Check Out My Latest Projects
+         𝒞𝒽𝑒𝒸𝓀 𝒪𝓊𝓉 𝑀𝓎 𝐿𝒶𝓉𝑒𝓈𝓉 𝒫𝓇𝑜𝒿𝑒𝒸𝓉𝓈
+
         </h2>
         <p className="text-gray-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
           I’m here to help if you’re looking for a skilled MERN Stack developer
@@ -43,7 +51,7 @@ const Projects = () => {
       </div>
 
       {/* Project Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 ">
         {projectData.map((project) => (
           <div
             key={project.id}
