@@ -39,9 +39,17 @@ const About = () => {
           </p>
         </div>
 
-        <button className="bg-[#C6FF00] text-black font-semibold py-3 px-6 rounded-md mt-4 hover:bg-[#a3e000] transition flex items-center gap-2">
+        <button
+          onClick={() => {
+            document.getElementById("skills")?.scrollIntoView({
+              behavior: "smooth",
+            });
+          }}
+          className="bg-[#C6FF00] text-black font-semibold py-3 px-6 rounded-md mt-4 hover:bg-[#a3e000] transition flex items-center gap-2"
+        >
           Learn More <FiArrowUpRight />
         </button>
+
       </div>
 
       {/* Right Side */}
@@ -66,7 +74,7 @@ const About = () => {
 
         <div className="absolute top-1/2 left-1/2 -translate-x-[120%] -translate-y-1/2 bg-white text-black rounded-full py-2 px-4 flex items-center gap-2 shadow-lg hover:scale-105 transition text-sm z-20">
           <img
-            src="https://i.pravatar.cc/50"
+            src="https://i.ibb.co.com/pvKz7SCS/Hero-Section-Image-BVk-IDw-X1.jpg"
             alt="profile"
             className="w-6 sm:w-8 h-6 sm:h-8 rounded-full"
           />

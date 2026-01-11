@@ -15,7 +15,7 @@ const Projects = () => {
     {
       id: 2,
       image: project2,
-      link: "https://frontlinebd.net/",
+      link: "http://graphicsamazon.com",
       bg: "from-green-600 to-black",
     },
     {
@@ -35,12 +35,12 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="w-full bg-black text-white py-16 px-5 sm:px-8 md:px-12 lg:px-20"
+      className="w-full bg-[#0B0B0B] text-white py-16 px-5 sm:px-8 md:px-12 lg:px-20"
     >
       {/* Heading Section */}
       <div className="text-center mb-12 px-2">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-         𝒞𝒽𝑒𝒸𝓀 𝒪𝓊𝓉 𝑀𝓎 𝐿𝒶𝓉𝑒𝓈𝓉 𝒫𝓇𝑜𝒿𝑒𝒸𝓉𝓈
+       Check Out My Recent Projects
 
         </h2>
         <p className="text-gray-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto">

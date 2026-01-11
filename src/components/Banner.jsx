@@ -111,7 +111,7 @@ const Banner = () => {
               Hire Me <FiArrowRight />
             </button>
             <a
-              href="https://drive.google.com/file/d/1vdM5PMfVEuz8GVQ75UIxQCi6LHBaxfPz/view"
+              href="https://drive.google.com/file/d/1gO1P2t4m518onlAECT5pWjI4kUK_XFro/view?usp=drivesdk"
               target="_blank"
               rel="noopener noreferrer"
             >

@@ -72,7 +72,7 @@ const Education = () => {
         <motion.a
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          href="https://drive.google.com/file/d/1vdM5PMfVEuz8GVQ75UIxQCi6LHBaxfPz/view"
+          href="https://drive.google.com/file/d/1gO1P2t4m518onlAECT5pWjI4kUK_XFro/view?usp=drivesdk"
           target="_blank"
           rel="noopener noreferrer"
           className="bg-[#C6FF00] text-black font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-md mt-4 hover:bg-[#a3e000] transition flex items-center justify-center gap-2 mx-auto lg:mx-0"

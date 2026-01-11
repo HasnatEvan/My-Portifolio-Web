@@ -75,10 +75,10 @@ const Contact = () => {
             <li className="flex items-center gap-3">
               <FaEnvelope className="text-[#C6FF00] shrink-0" />
               <a
-                href="mailto:hasnatevan59@gmail.com"
+                href="mailto:info@hasnatevan.top"
                 className="hover:text-[#C6FF00] transition"
               >
-                hasnatevan59@gmail.com
+                info@hasnatevan.top
               </a>
             </li>
             <li className="flex items-center gap-3">
