@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import { useLanguage } from "../context/LanguageContext";
 
 const skillsFront = [
   { name: "React.js", percent: 90 },
@@ -18,6 +19,7 @@ const skillsBack = [
 ];
 
 const Skill = () => {
+  const { t } = useLanguage();
   const sectionRef = useRef(null);
   const [frontProgress, setFrontProgress] = useState(skillsFront.map(() => 0));
   const [backProgress, setBackProgress] = useState(skillsBack.map(() => 0));
@@ -25,17 +27,13 @@ const Skill = () => {
 
   const animateSkills = () => {
     const start = performance.now();
-    const duration = 1000; // 1 second
+    const duration = 1000;
 
     const animate = (time) => {
       const progress = Math.min((time - start) / duration, 1);
 
-      setFrontProgress(
-        skillsFront.map((s) => Math.floor(s.percent * progress))
-      );
-      setBackProgress(
-        skillsBack.map((s) => Math.floor(s.percent * progress))
-      );
+      setFrontProgress(skillsFront.map((s) => Math.floor(s.percent * progress)));
+      setBackProgress(skillsBack.map((s) => Math.floor(s.percent * progress)));
 
       if (progress < 1) {
         animationRef.current = requestAnimationFrame(animate);
@@ -69,28 +67,15 @@ const Skill = () => {
   }, []);
 
   return (
-    <section
-      id="skills"
-      ref={sectionRef}
-      className="w-full bg-[#0B0B0B] text-white py-20 px-4 md:px-16 lg:px-24"
-    >
-      {/* === Section Title === */}
+    <section id="skills" ref={sectionRef} className="w-full theme-page py-20 px-4 md:px-16 lg:px-24">
       <div className="text-center mb-16">
-        <p className="uppercase text-gray-400 font-semibold tracking-widest">
-          My Expertise
-        </p>
-        <h2 className="text-4xl md:text-5xl font-bold mt-2">
-          Technical <span className="text-[#C6FF00]">Skills</span>
-        </h2>
+        <p className="uppercase theme-muted font-semibold tracking-widest">{t("skill.badge")}</p>
+        <h2 className="text-4xl md:text-5xl font-bold mt-2">{t("skill.title")}</h2>
       </div>
 
-      {/* === Skill Cards === */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-        {/* Front-End */}
-        <div className="bg-[#1A1A1A] rounded-2xl p-8 shadow-[0_0_15px_rgba(198,255,0,0.05)] border border-transparent hover:border-[#C6FF00] transition-all duration-500">
-          <h3 className="text-2xl font-semibold mb-6 text-[#C6FF00]">
-            Front-End
-          </h3>
+        <div className="theme-surface rounded-2xl p-8 shadow-[0_0_15px_rgba(198,255,0,0.05)] border border-transparent accent-hover-border transition-all duration-500">
+          <h3 className="text-2xl font-semibold mb-6 accent-text">{t("skill.frontEnd")}</h3>
           <ul className="space-y-5">
             {skillsFront.map((skill, i) => (
               <li key={i}>
@@ -98,9 +83,9 @@ const Skill = () => {
                   <span>{skill.name}</span>
                   <span>{frontProgress[i]}%</span>
                 </div>
-                <div className="w-full bg-gray-700/60 h-3 rounded-full overflow-hidden">
+                <div className="w-full theme-surface-strong h-3 rounded-full overflow-hidden">
                   <div
-                    className="bg-[#C6FF00] h-3 rounded-full transition-all duration-500 ease-out"
+                    className="accent-bg h-3 rounded-full transition-all duration-500 ease-out"
                     style={{ width: `${frontProgress[i]}%` }}
                   />
                 </div>
@@ -109,11 +94,8 @@ const Skill = () => {
           </ul>
         </div>
 
-        {/* Back-End */}
-        <div className="bg-[#1A1A1A] rounded-2xl p-8 shadow-[0_0_15px_rgba(198,255,0,0.05)] border border-transparent hover:border-[#C6FF00] transition-all duration-500">
-          <h3 className="text-2xl font-semibold mb-6 text-[#C6FF00]">
-            Back-End
-          </h3>
+        <div className="theme-surface rounded-2xl p-8 shadow-[0_0_15px_rgba(198,255,0,0.05)] border border-transparent accent-hover-border transition-all duration-500">
+          <h3 className="text-2xl font-semibold mb-6 accent-text">{t("skill.backEnd")}</h3>
           <ul className="space-y-5">
             {skillsBack.map((skill, i) => (
               <li key={i}>
@@ -121,9 +103,9 @@ const Skill = () => {
                   <span>{skill.name}</span>
                   <span>{backProgress[i]}%</span>
                 </div>
-                <div className="w-full bg-gray-700/60 h-3 rounded-full overflow-hidden">
+                <div className="w-full theme-surface-strong h-3 rounded-full overflow-hidden">
                   <div
-                    className="bg-[#C6FF00] h-3 rounded-full transition-all duration-500 ease-out"
+                    className="accent-bg h-3 rounded-full transition-all duration-500 ease-out"
                     style={{ width: `${backProgress[i]}%` }}
                   />
                 </div>
@@ -137,3 +119,4 @@ const Skill = () => {
 };
 
 export default Skill;
+

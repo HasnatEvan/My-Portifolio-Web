@@ -5,7 +5,7 @@ import ContactIcon from "../Shared/ContactIcon";
 
 const MainLayout = () => {
     return (
-        <div>
+        <div className="theme-page">
             <Navbar></Navbar>
             <Outlet></Outlet>
             <ContactIcon></ContactIcon>
@@ -15,3 +15,4 @@ const MainLayout = () => {
 };
 
 export default MainLayout;
+

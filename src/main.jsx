@@ -5,11 +5,18 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { router } from './Router/Router.jsx';
+import { ThemeProvider } from "./context/ThemeContext.jsx";
+import { LanguageProvider } from "./context/LanguageContext.jsx";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <div className='font-pr bg-[#0B0B0B]'>
-      <RouterProvider router={router} />
-    </div>
+    <LanguageProvider>
+      <ThemeProvider>
+        <div className='font-pr theme-page min-h-screen'>
+          <RouterProvider router={router} />
+        </div>
+      </ThemeProvider>
+    </LanguageProvider>
   </StrictMode>,
 )
+

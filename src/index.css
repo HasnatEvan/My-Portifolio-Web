@@ -1,8 +1,136 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+:root {
+  --accent: #00d4ff;
+  --accent-hover: #00b8de;
+  --accent-foreground: #ffffff;
+  --accent-soft-10: rgba(0, 212, 255, 0.1);
+  --accent-soft-30: rgba(0, 212, 255, 0.3);
+  --accent-soft-40: rgba(0, 212, 255, 0.4);
+  --bg-main: #f5f7fb;
+  --bg-nav: #ffffff;
+  --bg-surface: #e9edf5;
+  --bg-surface-strong: #ffffff;
+  --text-main: #111111;
+  --text-muted: #4b5563;
+  --border-muted: #cbd5e1;
+  --overlay: rgba(15, 23, 42, 0.45);
+}
+
+[data-theme="dark"] {
+  --accent: #c6ff00;
+  --accent-hover: #a3e000;
+  --accent-foreground: #111111;
+  --accent-soft-10: rgba(198, 255, 0, 0.1);
+  --accent-soft-30: rgba(198, 255, 0, 0.3);
+  --accent-soft-40: rgba(198, 255, 0, 0.4);
+  --bg-main: #0b0b0b;
+  --bg-nav: #111111;
+  --bg-surface: #1a1a1a;
+  --bg-surface-strong: #0f0f0f;
+  --text-main: #ffffff;
+  --text-muted: #9ca3af;
+  --border-muted: #374151;
+  --overlay: rgba(0, 0, 0, 0.5);
+}
+
 html {
   scroll-behavior: smooth;
 }
+
+body {
+  background: var(--bg-main);
+  color: var(--text-main);
+}
+
+.theme-page {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.theme-nav {
+  background-color: var(--bg-nav);
+  color: var(--text-main);
+}
+
+.theme-surface {
+  background-color: var(--bg-surface);
+}
+
+.theme-surface-strong {
+  background-color: var(--bg-surface-strong);
+}
+
+.theme-text {
+  color: var(--text-main);
+}
+
+.theme-muted {
+  color: var(--text-muted);
+}
+
+.theme-border {
+  border-color: var(--border-muted);
+}
+
+.theme-overlay {
+  background-color: var(--overlay);
+}
+
+.accent-text {
+  color: var(--accent);
+}
+
+.accent-bg {
+  background-color: var(--accent);
+}
+
+.accent-on {
+  color: var(--accent-foreground);
+}
+
+.accent-border {
+  border-color: var(--accent);
+}
+
+.accent-bg-soft {
+  background-color: var(--accent-soft-10);
+}
+
+.accent-border-soft {
+  border-color: var(--accent-soft-30);
+}
+
+.accent-hover-text:hover {
+  color: var(--accent);
+}
+
+.accent-hover-bg:hover {
+  background-color: var(--accent);
+}
+
+.accent-hover-bg-strong:hover {
+  background-color: var(--accent-hover);
+}
+
+.accent-hover-border:hover {
+  border-color: var(--accent);
+}
+
+.accent-focus-border:focus {
+  border-color: var(--accent);
+}
+
+.accent-hover-shadow:hover {
+  box-shadow: 0 0 25px var(--accent);
+}
+
+.accent-gradient-line {
+  background-image: linear-gradient(to bottom, var(--accent), var(--accent-soft-40), transparent);
+}
+
 @theme {
     --font-primary: "Roboto", "serif";
     --font-Open:  "Open Sans", serif;
